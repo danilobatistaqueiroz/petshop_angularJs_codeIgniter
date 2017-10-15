@@ -1,8 +1,16 @@
 <!-- Form used to add new entries of users in database -->
-<form class="form-horizontal alert alert-warning" name="userList" id="userForm" ng-submit="insertInfo(userInfo);" style="display:none" >
+<form class="form-horizontal" name="userList" id="userForm" ng-submit="insertInfo(userInfo);" >
   <h3 class="text-center">Insert User Details</h3>
+  <div class="form-group row">
+    <?php if ($this->session->flashdata('error') == TRUE): ?>
+        <p><?php echo $this->session->flashdata('error'); ?></p>
+    <?php endif; ?>
+    <?php if ($this->session->flashdata('success') == TRUE): ?>
+        <p><?php echo $this->session->flashdata('success'); ?></p>
+    <?php endif; ?>
+  </div>
   <div class="form-group">
-    <label for="Name">User Name:</label>
+    <label for="Name">Login:</label>
     <input type="text" name="user_name" class="form-control" placeholder="Enter Employee Name" ng-model="userInfo.name" autofocus required />
   </div>
   <div class="form-group">
@@ -35,6 +43,13 @@
     <p class="text-danger" ng-show="userList.user_address.$invalid && userList.user_address.$dirty">Address field is Empty!</p>
   </div>
   <div class="form-group">
-    <button class="btn btn-warning" ng-disabled="userList.$invalid" ng-click="insertMsg(userInfo.name)">Add Into Database</button>
+    <button class="btn btn-success" ng-disabled="userList.$invalid" ng-click="insertMsg(userInfo.name)">Add New User</button>
+    <input type="button" class="btn btn-warning" formnovalidate onclick="cancelNewUserForm();" value="Cancel" />
   </div>
 </form>
+<script>
+  function cancelNewUserForm(){
+    $('#newUserForm').slideUp();
+    $('#btnNewUser').prop('disabled',false);
+  }
+</script>

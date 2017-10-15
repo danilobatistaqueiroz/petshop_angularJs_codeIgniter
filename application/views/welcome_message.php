@@ -6,6 +6,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>Welcome to CodeIgniter</title>
 
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
 	<style type="text/css">
 
 	::selection { background-color: #E13300; color: white; }
@@ -80,6 +84,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<code>application/controllers/Welcome.php</code>
 
 		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
+
+		<!-- Button trigger modal -->
+		  <a data-toggle="modal" href="#loginModal" class="btn btn-primary btn-lg">Launch demo modal</a>
+		  <!-- Modal -->
+		  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		          <h4 class="modal-title">Hello World!</h4>
+		        </div>
+		        <div class="modal-body">
+		          Demo Modal
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+		      </div><!-- /.modal-content -->
+		    </div><!-- /.modal-dialog -->
+		  </div><!-- /.modal -->
+
+		<script>
+		  $('#loginModal').on('hidden.bs.modal', function () {
+		    alert('fechando1');
+		    window.location.reload(true);
+		  });
+		  $('#loginModal').on('hidden', function () {
+		    alert('fechando2');
+		    window.location.reload(true);
+		  });
+		  $("#loginModal").on('hide', function () {
+		    alert('fechando3');
+		    window.location.reload();
+		  });
+		</script>
+
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
